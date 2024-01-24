@@ -3,7 +3,7 @@ import '../assets/css/loading.css';
 
 const LoadingComp = () => {
   return (
-    <div class="loading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+    <div className={'loading'}><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
 )
 }
 

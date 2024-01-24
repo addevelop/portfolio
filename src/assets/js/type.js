@@ -1,48 +1,56 @@
-function addText(id, second, text)
+export function writeText(id, second, pause, secondDelete, textMany)
 {
-    var time = second / text.length;
-    var idText = document.getElementById(id);
-    console.log(idText);
-
-    var i = 0;
-    var intervalT = setInterval(() => {
-        if(i < text.length)
-        {
-            id.innerText = text[i]
-            i++;
-        }
-    }, time)
+  var add = true;
+  var element = document.getElementById(id);
+  var i = 0;
+  setInterval(() =>{
+  
+  
+    addText(element, second, pause, secondDelete, textMany[i]);
+    i = i >= textMany.length - 1 ? 0 : i + 1;
+  
+    }, second + secondDelete + pause)
 }
 
-function deleteText(id, second)
+function addText(element, second, pause, secondDelete, text)
 {
-    var id = document.getElementById(id);
-    var text = id.value;
-    var time = second / text.length;
-    var i = text.length;
-    var intervalT = setInterval(() => {
-        if(i != 0)
-        {
-            text.substring(0, text.length - 1);
-            i--;
-        }
-    }, time)
+
+   var time = second / text.length;
+  var i = 0;
+    console.log(text);
+
+  element.innerHTML = '';
+  var textIntervalFunction = setInterval(() => {
+    console.log(text[i]);
+    element.innerHTML = element.innerHTML + text[i];
+    i++;
+    if(i >= text.length)
+      {
+        clearInterval(textIntervalFunction);
+        setTimeout( () => {
+          deleteText(element, secondDelete)
+        }, pause)
+
+      }
+  }, time)
 }
 
-export const writeText = (id, second, text) =>
+function deleteText(element, second)
 {
-    var on = true;
 
-    setInterval(() => {
-        if(on)
-        {
-            addText(id, second, text)
-            on = false;
-        }
-        else
-        {
-            // deleteText(id, second)
-            on = true;
-        }
-    }, second)
+  var text = element.innerText;
+  var time = second / text.length
+  var i = text.length - 1;
+
+  var textIntervalFunctionDelete = setInterval(() => {
+    text = text.substring(0, i);
+    element.innerText = text;
+    i--;
+    if(i < 0)
+      {
+        clearInterval(textIntervalFunctionDelete)
+      }
+  }, time)
 }
+
+ 
