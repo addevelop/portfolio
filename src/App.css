@@ -1,0 +1,83 @@
+body
+{
+  background-color: #3586ff;
+  overflow: hidden;
+}
+
+.w-50
+{
+  width: 50%;
+}
+
+.float-right
+{
+  float: right;
+}
+
+.position-relative
+{
+  position: relative;
+}
+
+.flex-center
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.display-flex
+{
+  display: flex;
+}
+.justify-center
+{
+  justify-content: center;
+}
+.align-center
+{
+  align-items: center;
+}
+.h-100
+{
+  height: 100%;
+}
+.color-white
+{
+  color: white;
+}
+
+.underline
+{
+  position: relative;
+}
+.underline::after
+{
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 100%;
+  left: 0;
+  background-color: rgb(225, 15, 248);
+  content: '';
+}
+.title
+{
+  letter-spacing: 0.3em;
+}
+
+.text
+{
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.color-react
+{
+  color: #00FFFF;
+}
+
+.color-pink
+{
+  color: rgb(225, 15, 248);
+}
