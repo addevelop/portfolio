@@ -17,11 +17,9 @@ function addText(element, second, pause, secondDelete, text)
 
    var time = second / text.length;
   var i = 0;
-    console.log(text);
 
   element.innerHTML = '';
   var textIntervalFunction = setInterval(() => {
-    console.log(text[i]);
     element.innerHTML = element.innerHTML + text[i];
     i++;
     if(i >= text.length)

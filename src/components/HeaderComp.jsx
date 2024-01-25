@@ -12,7 +12,7 @@ const handleClick = () => {
   return (
     <header>
       <section className="container-profil">
-        <img className={`profil ${ profilImg ? 'profilActive' : ''}`} src={profil} alt="profil"/>
+        <img id='ID-profil' className={`profil ${ profilImg ? 'profilActive' : ''}`} src={profil} alt="profil"/>
       </section>
       <section className="container-menu">
         <nav className="menu">
