@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('wheel', (e) => {
         if(!_load)
         {
-            _container = document.getElementById('ID-slider');
             _scrollNb = document.querySelectorAll('.sliderNb');
             _page = document.querySelectorAll('.page');
 
@@ -32,47 +31,29 @@ function scrollSlider(e)
     {
         if(e.deltaY > 0)
         {
-            scrollDown();
+            if(_scroll < _page.length -1)
+            {
+                _scroll++;
+            }
         }
         else
         {
-            scrollUp();
+            if(_scroll > 0)
+            {
+                _scroll--;
+                    
+            }
         }
+        removeClass();
+        pageAppear();
+        profilAppear();
         _scrollTime = false;
         setTimeout(() => _scrollTime = true, 1000);
     }
     
 }
 
-function scrollDown()
-{
-    if(_scroll < _page.length -1)
-    {
-        _scroll++;
-        _transform = _transform - _page[0].offsetHeight;
-        _container.style.transform = 'translateY(' + _transform + 'px)';
-        removeClass();
-        pageAppear();
-        profilAppear();
-    }
-    
 
-}
-
-function scrollUp()
-{
-    if(_scroll > 0)
-    {
-        _scroll--;
-        _transform = _transform + _page[0].offsetHeight;
-        _container.style.transform = 'translateY(' + _transform + 'px)';
-        removeClass();
-        pageAppear();
-        profilAppear();
-    }
-    
-    
-}
 
 function removeClass()
 {
@@ -87,12 +68,19 @@ function removeClass()
 function pageAppear()
 {
     _page.forEach(page => {
-        page.style.opacity = '0';
-        console.log(page);
+        page.style.display = 'none';
 
     })
-
-    _page[_scroll].style.opacity = '1';
+    if(_scroll > 1)
+    {
+        document.querySelector('body').style.transitionDuration = "1s";
+        document.querySelector('body').style.backgroundColor = "black";
+    }
+    else
+    {
+        document.querySelector('body').style.backgroundColor = "#3586ff";
+    }
+    _page[_scroll].style.display = 'block';
 }
 
 function profilAppear()
@@ -107,4 +95,8 @@ function profilAppear()
         profil.classList.add('profilActive');
     }
 
+}
+export function getScroll()
+{
+    return _scroll;
 }

@@ -2,7 +2,13 @@ import { useEffect, useState } from 'react'
 import SliderComp from '../components/SliderComp'
 import '../assets/css/landingPage.css'
 import { writeText } from '../assets/js/type.js'
-import '../assets/js/slider.js'
+import { getScroll } from '../assets/js/slider.js'
+import PagesSkill from './PagesSkill.jsx'
+import PageHardSkill from './PageHardSkill.jsx'
+
+
+
+
 
 
 function LandingPage() {
@@ -10,11 +16,16 @@ function LandingPage() {
   let [ slider, setSlider] = useState(0);
   useEffect(() => {
     writeText('title', 3900, 800, 1000, ['WEB DEVELOPER,', 'Adrien,']);
+    document.addEventListener('wheel', () => {
+      setSlider(getScroll);
+    })
   }, [])
+  
   
   return (
     <>
       <SliderComp />
+
       <main id="ID-slider">
         <section className={'page'}>
           <div className={' display-flex align-center color-white w-50 h-100 position-relative float-right'}>
@@ -27,7 +38,10 @@ function LandingPage() {
           </div>  
         </section>
         <section className={'page'}>
-          <h2 className={'beforeSkill title color-white'}>You can see &nbsp;<span className={'underline'}>My skill</span></h2>
+          <PagesSkill slider={ slider }/>
+        </section>
+        <section className={'page'}>
+          <PageHardSkill />
         </section>
       </main>
     </>

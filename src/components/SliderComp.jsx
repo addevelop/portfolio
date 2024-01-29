@@ -7,11 +7,7 @@ function SliderComp() {
       <section className={'container-count'}>
       <div className={'sliderNb'}></div>
       <div className={'sliderNb'}></div>
-      </section>
-      <section className="arrow-slide">
-        <FontAwesomeIcon className={'arrow'} icon={faArrowUp} />
-        <FontAwesomeIcon className={'arrow'} icon={faArrowDown} />
-
+      <div className={'sliderNb'}></div>
       </section>
     </nav>
   )
